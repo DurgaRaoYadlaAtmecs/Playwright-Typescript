@@ -11,19 +11,10 @@ import { devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: './tests',
+  testDir: './pomtest',
+  testMatch:'addtoCartUsingFixture.test.ts',
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
-  use: {
-    headless: false,
-    screenshot: "on",
-    video: "on"
-  },
-  reporter:[["dot"], ["json", {
-    outputFile:"jsonReports/jsonReport.json"
-  }], ["html", {
-    open: "never"
-  }]],
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -43,6 +34,7 @@ const config: PlaywrightTestConfig = {
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    baseURL:"https://ecommerce-playground.lambdatest.io/index.php?",
     headless: false,
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,

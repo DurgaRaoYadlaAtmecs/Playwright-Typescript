@@ -8,12 +8,12 @@ test('Login test demo', async () => {
 
     await page.goto("https://ecommerce-playground.lambdatest.io/");
     await page.hover("//a[@data-toggle='dropdown']//span[contains(.,'My account')]");
-    // await page.click("text=login")
+    // await page.click("text=Login")
     await page.click("'Login'");
 
     await page.fill("input[name='email']", "koushik350@gmail.com");
     await page.fill("input[name='password']", "Pass123");
-    await page.click("inut[value='Login']");
+    await page.click("input[value='Login']");
 
     await page.waitForTimeout(5000);
 

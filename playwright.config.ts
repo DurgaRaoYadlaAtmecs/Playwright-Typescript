@@ -11,8 +11,8 @@ import { devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: './pomtest',
-  testMatch:'addtoCartUsingFixture.test.ts',
+  testDir: './tests',
+  // testMatch:'addtoCartUsingFixture.test.ts',
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
@@ -34,8 +34,16 @@ const config: PlaywrightTestConfig = {
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    baseURL:"https://ecommerce-playground.lambdatest.io/index.php?",
+    baseURL:"https://letcode.in",
     headless: false,
+    browserName: "chromium",
+    screenshot: "on",
+    // launchOptions: {
+    //   logger: {
+    //     isEnabled: (name, sverity) => true,
+    //     log: (name, severity, message, args) => console.log(name, severity, message, args)
+    //   }
+    // },
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */

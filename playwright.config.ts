@@ -34,11 +34,13 @@ const config: PlaywrightTestConfig = {
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    baseURL:"https://letcode.in",
-    headless: false,
-    browserName: "chromium",
+    // baseURL:"https://google.com",
+    // headless: false,
+    // browserName: "chromium",
     screenshot: "on",
+    // viewport: {width: 1366, height:728},
     // launchOptions: {
+    //   args: ["--start-maximized"],
     //   logger: {
     //     isEnabled: (name, sverity) => true,
     //     log: (name, severity, message, args) => console.log(name, severity, message, args)
@@ -55,19 +57,19 @@ const config: PlaywrightTestConfig = {
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'chromium',
-      use: {
-        ...devices['Desktop Chrome'],
-      },
-    }, 
-
     // {
-    //   name: 'firefox',
+    //   name: 'chromium',
     //   use: {
-    //     ...devices['Desktop Firefox'],
+    //     ...devices['Desktop Chrome'],
     //   },
-    // },
+    // }, 
+
+    {
+      name: 'firefox',
+      use: {
+        ...devices['Desktop Firefox'],
+      },
+    },
 
     // {
     //   name: 'webkit',

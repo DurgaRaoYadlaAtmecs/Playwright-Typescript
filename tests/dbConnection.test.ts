@@ -35,3 +35,12 @@ const { DB } = require("../pages/dbConnection");
         })
     })
 
+    test("Delete a table and verify", async () => {
+
+        await db.connectDb(`DROP TABLE first_db_creation`).then((result) => 
+          {
+              console.log("chk message----->"+JSON.stringify(result))
+              expect(result.message).toEqual("")
+          })
+      })
+

@@ -1,26 +1,22 @@
 import {test, expect } from "@playwright/test";
-
 import { MsSQLConnectionUtility } from "./DBUtils/MsSQLDBUtils/MsSQLConnectionUtility";
 
-import { MySQLConnectionUtility } from "./DBUtils/MySQLDBUtils/MySQLConnectionUtility"
-
-
-let myqlDB: DBOperations = new MySQLConnectionUtility();
- let msqlDB: DBOperations = new MsSQLConnectionUtility();
+let mysqlDB: DBOperations = new MsSQLConnectionUtility();
 
 //  test.beforeEach(async () => {
 //      db.getPool();
 //       //db.connectSQLDB();
 // })
 
- test.afterAll(async () => {
-    msqlDB.endConnection();
-})
+//  test.afterAll(async () => {
+//      db.closeMYSQLPool();
+//      db.closeMSSQLPool();
+// })
  test.describe('two tests', () => {
 
-    //  test("Input Entries into the table", async () => {
+    //  test("Input Entries into the table conn2", async () => {
 
-    //   await mysqlDB.execute(`INSERT INTO first_db_creation VALUE("Sulaiman12", "Male", 25, "Pune");`).then((result) => 
+    //   await mysqlDB.execute(`INSERT INTO first_db_creation VALUE("Neha", "Female", 28, "chennai");`).then((result) => 
     //     {
     //         console.log("chk affected rows----->",(result))
     //         expect(result.affectedRows).toEqual(1)
@@ -29,12 +25,12 @@ let myqlDB: DBOperations = new MySQLConnectionUtility();
 
     //  test("Update an Entry into the table and verify", async () => {
 
-    // await mysqlDB.execute(`UPDATE first_db_creation SET age = 36 WHERE full_Name="Kiran"`).then((result) => {
+    // await db.searchQueryMYSQL(`UPDATE first_db_creation SET age = 50 WHERE full_Name="Kiran"`).then((result) => {
     //     console.log("chk changedRows----->",(result))
     //     expect(result.changedRows).toEqual(1)
     // })
 
-    // await mysqlDB.execute(`SELECT full_Name FROM first_db_creation WHERE age = 27`).then((result) => {
+    // await db.searchQueryMYSQL(`SELECT full_Name FROM first_db_creation WHERE age = 27`).then((result) => {
     //     console.log("chk changedRows fetch----->",JSON.stringify(result[0]))
     //     expect(result[0].full_Name).toEqual('Ramesh')
     // })
@@ -59,22 +55,22 @@ let myqlDB: DBOperations = new MySQLConnectionUtility();
 //     })
 
        
-      test("Input Entries into the table", async () => {
+     test("Input Entries into the table", async () => {
 
-        await msqlDB.execute(`INSERT INTO testDB.dbo.persons VALUES (8797, 'L6', 'Rakesh6', 'KPHB', 'HYD');`).then((result) => 
+        await mysqlDB.execute(`INSERT INTO testDB.dbo.persons VALUES (8792, 'K2', 'Keerthi2', 'Pune', 'PUNE');`).then((result) => 
           {
-              console.log("chk affected rows conn1----->",(result.rowsAffected))
+              console.log("chk affected rows conn2----->",(result.rowsAffected))
               expect(result.rowsAffected[0]).toEqual(1)
           })
       })
 
-      test("Update an Entry into the table and verify", async () => {
+    //   test("Update an Entry into the table and verify", async () => {
 
-        await msqlDB.execute(`UPDATE testDB.dbo.persons SET Lastname = 'z' WHERE PersonID = 1234;`).then((result) => {
-            console.log("chk changedRows----->",(result))
-            expect(result.rowsAffected[0]).toEqual(1)
-        }) 
-    }) 
+    //     await db.searhMSSQLQuery(`UPDATE testDB.dbo.persons SET Lastname = 'Y' WHERE PersonID = 1234;`).then((result) => {
+    //         console.log("chk changedRows----->",(result))
+    //         expect(result.rowsAffected[0]).toEqual(1)
+    //     }) 
+    // }) 
 });
 
 

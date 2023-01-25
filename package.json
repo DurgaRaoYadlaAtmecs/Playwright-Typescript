@@ -15,8 +15,11 @@
   },
   "dependencies": {
     "moment": "^2.29.4",
+    "msnodesqlv8": "^3.0.1",
     "mssql": "^9.0.1",
     "mysql2": "^3.0.1",
-    "playwright": "^1.30.0-alpha-jan-12-2023"
+    "playwright": "^1.30.0-alpha-jan-12-2023",
+    "rxjs": "^7.8.0",
+    "sql": "^0.78.0"
   }
 }

@@ -40,8 +40,8 @@ export class MsSQLConnectionUtility implements DBOperations {
               console.log("----------chk result---------", JSON.stringify(result));
                 return(result);
         }catch (error) {
-            console.error('[mysql.connector][execute][Error]: ', error);
-            throw new Error('failed to execute MySQL query');
+            console.error('[mssql.connector][execute][Error]: ', error);
+            throw new Error('failed to execute MsSQL query');
         } 
     }
 
@@ -50,7 +50,7 @@ export class MsSQLConnectionUtility implements DBOperations {
      * @param pool 
      */
      public endConnection = async (): Promise<any>=> {
-        this.pool.end();
+        this.pool.close();
     }
 
 }

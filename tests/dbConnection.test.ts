@@ -5,17 +5,19 @@ import { MsSQLConnectionUtility } from "./DBUtils/MsSQLDBUtils/MsSQLConnectionUt
 import { MySQLConnectionUtility } from "./DBUtils/MySQLDBUtils/MySQLConnectionUtility"
 
 
-let myqlDB: DBOperations = new MySQLConnectionUtility();
- let msqlDB: DBOperations = new MsSQLConnectionUtility();
+//let mysqlDB: DBOperations = new MySQLConnectionUtility();
+ let mssqlDB: DBOperations = new MsSQLConnectionUtility();
 
 //  test.beforeEach(async () => {
 //      db.getPool();
 //       //db.connectSQLDB();
 // })
 
- test.afterAll(async () => {
-    msqlDB.endConnection();
+test.afterAll(async () => {
+    mssqlDB.endConnection();
+    //mysqlDB.endConnection();
 })
+
  test.describe('two tests', () => {
 
     //  test("Input Entries into the table", async () => {
@@ -61,7 +63,7 @@ let myqlDB: DBOperations = new MySQLConnectionUtility();
        
       test("Input Entries into the table", async () => {
 
-        await msqlDB.execute(`INSERT INTO testDB.dbo.persons VALUES (8797, 'L6', 'Rakesh6', 'KPHB', 'HYD');`).then((result) => 
+        await mssqlDB.execute(`INSERT INTO testDB.dbo.persons VALUES (8806, 'm6', 'Rakesh15', 'Ameerpet', 'HYD');`).then((result) => 
           {
               console.log("chk affected rows conn1----->",(result.rowsAffected))
               expect(result.rowsAffected[0]).toEqual(1)
@@ -70,11 +72,19 @@ let myqlDB: DBOperations = new MySQLConnectionUtility();
 
       test("Update an Entry into the table and verify", async () => {
 
-        await msqlDB.execute(`UPDATE testDB.dbo.persons SET Lastname = 'z' WHERE PersonID = 1234;`).then((result) => {
+        await mssqlDB.execute(`UPDATE testDB.dbo.persons SET Lastname = 'm' WHERE PersonID = 1234;`).then((result) => {
             console.log("chk changedRows----->",(result))
             expect(result.rowsAffected[0]).toEqual(1)
         }) 
     }) 
+
+    test("Verify that there is only one row where PersonID=1234", async () => {
+
+        await mssqlDB.execute(`SELECT * FROM testDB.dbo.persons WHERE PersonID=1234;`).then((result) => {
+            console.log("chk changedRows personid=1234----->",(result))
+            expect(result.recordset.length).toEqual(1)
+        }) 
+    })
 });
 
 

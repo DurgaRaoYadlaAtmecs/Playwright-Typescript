@@ -50,7 +50,7 @@ export class MySQLConnectionUtility implements DBOperations {
      * @param pool 
      */
      public endConnection = async (): Promise<any>=> {
-        this.pool.end();
+         this.pool.end();
     }
 
 }
